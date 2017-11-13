@@ -1,8 +1,8 @@
 
 // from game.js 
-export const UPDATE_GUESS = 'UPDATE_GUESS';
-export const updateGuess = guess => ({
-    type: UPDATE_GUESS,
+export const MAKE_GUESS = 'MAKE_GUESS';
+export const makeGuess = guess => ({
+    type: MAKE_GUESS,
     guess
 })
 // from game.js
