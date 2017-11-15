@@ -1,8 +1,7 @@
 import {createStore} from 'redux';
 
-import {combineReducers} from 'redux';
 
-// import {TBDreducer} from './reducers';
+import reducer from './reducers';
 
-// export default createStore(TBDreducer);
+export default createStore(reducer);
 

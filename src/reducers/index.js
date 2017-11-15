@@ -1,6 +1,5 @@
 import {NEW_GAME, MAKE_GUESS, SHOW_INFO_MODAL } from '../actions';
 
-
 const initialState = {
     guesses: [],
     feedback: 'Make your guess!',
@@ -8,35 +7,58 @@ const initialState = {
     showInfoModal: false,
 };
 
-export const newGame = (state=initialState, action) => {
+export default (state=initialState, action) => {
+    
     if (action.type === NEW_GAME){
         return Object.assign({}, state, {
-            correctAnswer: action.correctAnswer,
+            guesses: [],
+            feedback: 'Make your guess!',
+            correctAnswer: Math.floor(Math.random() * 100) + 1,
+            showInfoModal: false,
         });
+        
     }
-    return state;
-}
 
-export const makeGuess = (state=initialState, action) => {
-    // if (action.type === MAKE_GUESS) {
-    //     return Object.assign({}, state, {
-    //         guesses: action.guesses, 
-    //         feedback: action.feedback,
-    //     })
-    //  }
-        switch(action.type) {
-            case 'MAKE_GUESS':
-            return {
-                guesses: action.guesses,
-                feedback: action.feedback,
-            }
+    if (action.type === MAKE_GUESS) {
+       let guess = parseInt(action.guess, 10);
+        if (isNaN(guess)) {
+            return Object.assign({}, state, {
+                feedback: 'Please enter a valid number'
+            });
+            
         }
-    return state;
-}
 
-export const showInfoModal = (state=initialState, action) => {
-    if (action.type === SHOW_INFO_MODAL) {
+        const difference = Math.abs(guess - state.correctAnswer);
+
+        let feedback;
+        if (difference >= 50) {
+            feedback = 'You\'re Ice Cold...';
+        }
+        else if (difference >= 30) {
+            feedback = 'You\'re Cold...';
+        }
+        else if (difference >= 10) {
+            feedback = 'You\'re Warm';
+        }
+        else if (difference >= 1) {
+            feedback = 'You\'re Hot!';
+        }
+        else {
+            feedback = 'You got it!';
+        }
+        state = Object.assign({}, state, {
+            guesses: [...state.guesses, action.guess],
+            feedback,
+        })
+        return state;
+     }
+
+     if (action.type === SHOW_INFO_MODAL) {
+        return Object.assign({}, state, {
+            showInfoModal: !state.showInfoModal,
+        })
         
     }
     return state;
 }
+
