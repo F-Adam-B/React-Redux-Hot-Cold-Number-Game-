@@ -9,7 +9,7 @@ export const makeGuess = guess => ({
 export const NEW_GAME = 'NEW_GAME';
 export const newGame = () => ({
     type: NEW_GAME,
-    
+    correctAnswer: Math.round(Math.random() * 100),
 })
 
 // from header.js

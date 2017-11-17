@@ -4,7 +4,7 @@ import TopNav from './top-nav';
 import InfoModal from './info-modal';
 
 import './header.css';
-import { showInfoModal } from '../actions'
+
 import { connect } from 'react-redux'
 
 export function Header (props) {
@@ -15,7 +15,7 @@ export function Header (props) {
 
         let infoModal;
         if (props.showInfoModal) {
-            infoModal = <InfoModal onClose={() => props.dispatch(showInfoModal())} />;
+            infoModal = <InfoModal />;
         }
 
         return (
@@ -29,9 +29,6 @@ export function Header (props) {
 };
 
 export const mapStateToProps = (state, props) => ({
-    guesses: state.guesses,
-    feedback: state.feedback,
-    correctAnswer: state.correctAnswer,
     showInfoModal: state.showInfoModal,
 })
 export default connect(mapStateToProps)(Header)

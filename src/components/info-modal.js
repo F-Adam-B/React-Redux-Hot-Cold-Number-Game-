@@ -8,7 +8,7 @@ import {showInfoModal} from '../actions';
 export class InfoModal extends React.Component {
     onClose(event) {
         event.preventDefault();
-        this.props.dispatch(showInfoModal);
+        this.props.dispatch(showInfoModal());
         }
 
     render() {

@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
 
 
-import reducer from './reducers';
+import reducer, { hotReducer } from './reducers';
 
-export default createStore(reducer);
+export default createStore(hotReducer);
 
