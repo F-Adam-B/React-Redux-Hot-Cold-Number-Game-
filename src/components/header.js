@@ -9,10 +9,6 @@ import { connect } from 'react-redux'
 
 export function Header (props) {
     
-    // toggleInfoModal() {
-    //     this.props.dispatch(showInfoModal())
-    // }
-
         let infoModal;
         if (props.showInfoModal) {
             infoModal = <InfoModal />;
