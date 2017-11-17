@@ -24,7 +24,7 @@ export class TopNav extends React.Component {
                         <a className="what" href="#" onClick={e => this.onInfo(e)}>
                             What?
                         </a>
-                    </li>
+                    </li>   
                     <li>
                         <a className="new" href="#" onClick={e => this.onNewGame(e)}>
                             + New Game
